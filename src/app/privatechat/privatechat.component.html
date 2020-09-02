@@ -1,0 +1,14 @@
+<div id="chat-applicaton">
+    <div id="chat-window">
+       
+      <div id="output" *ngFor="let data of output">
+          <p *ngIf="data.flag!='s'"><strong>{{receiver}} : </strong>{{data.message}}</p>
+          <p style="text-align:right;" *ngIf="data.flag!='r'"><strong>{{sender}} : </strong>{{data.message}}</p>
+      </div>
+      
+    </div>
+    <input id="handle" type="text" [(ngModel)]="receiver" placeholder="To:" />
+    <input id="message" type="text" [(ngModel)]="message" placeholder="Message" autocomplete="off"
+       />
+    <button type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">Send</button>
+</div>

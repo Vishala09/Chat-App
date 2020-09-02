@@ -1,0 +1,9 @@
+.error{
+    
+    float: right;
+    color: red;
+}
+
+.error input{
+background-color: tomato;
+}

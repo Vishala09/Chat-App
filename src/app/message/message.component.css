@@ -1,0 +1,19 @@
+.search{
+    width:300px;
+    border-radius: 25px;
+}
+
+.box{
+    background:gray;
+    width:300px;
+}
+
+.ball{
+    background-color:pink;
+    border-radius: 50%;
+    height:50px;
+    width: 50px;
+    font-size: 32px;
+    text-align: center;
+    margin-right: 10px;
+}
