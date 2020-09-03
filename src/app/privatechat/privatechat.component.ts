@@ -66,6 +66,7 @@ export class PrivatechatComponent implements OnInit {
     .subscribe(
       messages => {
           console.log("messages");
+          this.output=[];
           if(messages['messages']!=[])
           this.loadMessages(messages['messages']);
       },
