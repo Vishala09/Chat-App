@@ -5,12 +5,13 @@
     <div class="col-3">
         <i class="fas fa-user"></i> <h2>Contacts</h2>
     </div>
-    <div class="offset-1 form-group">
+    <div  class="offset-1 form-group">
       <div class="col-3">
         <input (input)="searchContacts()" class="form-control" type="text" name="search" placeholder="Chat with..." [(ngModel)]="search">
-        <div  class="search">
-            <div *ngFor="let user of searchedData">
-                  <span  (click)="openChatWindow(user)">{{user}}</span> 
+        <div  class="search" >
+            <div *ngFor="let user of searchedData" class="box" (click)="openChatWindow(user)">
+                  {{user}}
+                  <br>
             </div>
         </div>
       </div>
@@ -20,7 +21,7 @@
             <table class="table table-dark">
             <tr>
                <th></th>
-               <th>User name</th>
+               <th>Basic Info</th>
                <th>Company</th>
             </tr>
                <tr *ngFor="let user of allContacts"  (click)="showUserInfo(user)">
@@ -45,7 +46,8 @@
         <div class="offset-2 col-4 d-flex align-items-start" >
             <div class="card" style="width: 18rem;" style="display: none;"  id="userInfo">
                 <div class="card-body">
-                  <div  [style.background]="getRandomColor()" style="text-align:center" class="text-center align-self-center ball">{{showUser.userId[0] | uppercase}} </div>
+                  
+                  <div style="text-align:center" class="text-center align-self-center ball">{{showUser.userId[0] | uppercase}} </div>
                   <h5 class="align-self-center card-title">{{showUser.userId}}</h5>
                   <p class="card-text">{{showUser.emailId}}</p>
                   <a (click)="openChatWindow(showUser.emailId)" class="btn btn-primary">Send message</a>

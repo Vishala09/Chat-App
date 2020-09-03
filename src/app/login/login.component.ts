@@ -23,7 +23,7 @@ export class LoginComponent  {
   user:user = {userId:"",password:"",emailId:""}
   ngOnInit(): void {
    // this.userId=new FormControl("",[Validators.required,Validators.pattern('[a-zA-Z].*')]);
-    this.emailId=new FormControl("",Validators.required);
+    this.emailId=new FormControl("",[Validators.required,this.emailValidator]);
     this.password=new FormControl("",Validators.required);
     this.loginForm=new FormGroup({
      // userId:this.userId,
@@ -59,6 +59,18 @@ export class LoginComponent  {
         this.errorMsg="Please check for form validations";
     }
   }
- 
+  
+  emailValidator(control: FormControl) { 
+    let email = control.value; 
+    if (email && email.indexOf("@") != -1 && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) { 
+
+      return null; 
+    }
+    else
+    {
+      return {invalidEmail:true};
+    }
+    
+  }
 
 }

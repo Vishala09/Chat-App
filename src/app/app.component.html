@@ -2,5 +2,8 @@
   <a  [routerLink]="['/login']" routerLinkActive="active" href="/login" >Login</a>
   <a [routerLink]="['/register']" routerLinkActive="active" href="/register">Register</a>
   <a [routerLink]="['/messages/all']" routerLinkActive="active" href="/messages/all">Messages</a>
+  <a class="float-right" [routerLink]="['/privateChat']" routerLinkActive="active" href="/privateChat">
+    <img src="../../assets/images/chatnow.png" width="60px" height="20px" >
+  </a>
 </div>
 <router-outlet></router-outlet>

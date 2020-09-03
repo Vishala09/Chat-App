@@ -21,10 +21,20 @@ export class MessageComponent implements OnInit {
   showUser:user = {userId:"",password:"",emailId:""}
   clk:boolean=false;
   ngOnInit(): void {
-    if (!this.authService.isLoggedIn) {
-      this.router.navigate(['/login']);
-   }
-   else
+    this.authService.getCurrentUser()
+    .subscribe(
+      currentUser => {
+        console.log(currentUser,"current user");
+        if(currentUser['isLoggedIn']!=true)
+        {
+          this.router.navigate(['/login']);
+        }
+      },
+      error => {
+        console.log("Errorrr",error);
+      }
+    );
+ 
    {
     this.authService.getAllUsers()
     .subscribe(

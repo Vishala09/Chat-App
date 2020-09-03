@@ -1,14 +1,57 @@
-<div id="chat-applicaton">
-    <div id="chat-window">
-       
-      <div id="output" *ngFor="let data of output">
-          <p *ngIf="data.flag!='s'"><strong>{{receiver}} : </strong>{{data.message}}</p>
-          <p style="text-align:right;" *ngIf="data.flag!='r'"><strong>{{sender}} : </strong>{{data.message}}</p>
+<div class="">
+  <div class="d-flex flex-row-reverse" >
+    <div (click)="downloadAsJson()" class=" btn btn-warning ">Back Up - Download As JSON</div>
+    <div (click)="saveincloud()" class=" btn btn-warning mr-2">Back Up - Save in cloud</div>
+    <div (click)="resetData()" class=" btn btn-warning mr-2">Reset Data</div>
+  </div>
+</div>
+<div class="">
+  <div class="">
+      <div id="chat-applicaton">
+          <div id="chat-window">
+            
+            <div id="output" *ngFor="let data of output">
+              <span>
+                <p *ngIf="data.flag!='s'"><strong>{{receiver}} : </strong>{{data.message}}</p>
+                <p style="text-align:right;" *ngIf="data.flag!='r'"><strong>{{sender}} : </strong>{{data.message}}</p>
+              </span>
+                
+            </div>
+            
+          </div>
+          <input id="handle" type="text" (change)="getMessages()" [(ngModel)]="receiver" placeholder="To:" />
+          <input id="message" type="text" [(ngModel)]="message" placeholder="Message" autocomplete="off" />
+          <div *ngIf="!receiver">
+            <button class="disabledbutton" disabled type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">Send</button>
+          </div>
+          <div *ngIf="receiver==sender">
+            <button class="disabledbutton" disabled type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">Send</button>
+          </div>
+          <div *ngIf="receiver && receiver!=sender">
+            <button class="button"  type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">Send</button>
+          </div>
+          
       </div>
-      
+  </div>
+   
+</div>
+<a id="downloadasjson" style="display:none"></a>
+<button style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="alert"></button>
+<div class="modal" tabindex="-1" id="myModal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="color:goldenrod;font-weight:bold;text-align:center" class="modal-title">Alert</h5>
+        <button type="button" class="close" data-dismiss="modal"  aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 style="color:red;font-weight:bold;text-align:center">{{modal}}</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
-    <input id="handle" type="text" [(ngModel)]="receiver" placeholder="To:" />
-    <input id="message" type="text" [(ngModel)]="message" placeholder="Message" autocomplete="off"
-       />
-    <button type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">Send</button>
+  </div>
 </div>

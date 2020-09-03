@@ -4,8 +4,10 @@
 }
 
 .box{
-    background:gray;
-    width:300px;
+    background:gainsboro;
+    width:285px;
+    border-bottom-style: solid;
+    cursor: pointer;
 }
 
 .ball{

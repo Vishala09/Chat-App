@@ -1,6 +1,6 @@
-<div class="d-flex align-items-center justify-content-center">
+<div class="d-flex justify-content-center">
    <div>
-      <h1>PLease Login Here</h1>
+      <h2>PLease Login Here</h2>
       <em style="color:green">{{successMsg}}</em>
       <em style="color:red">{{errorMsg}}</em>
       <form [formGroup]="loginForm" (ngSubmit)="saveProfile(loginForm.value)"  autocomplete="off" novalidate>
@@ -11,7 +11,9 @@
                  </div>
                  <div class="col-8">
                      <em class="error" *ngIf="(submitclicked==true || loginForm.controls.emailId.touched) && loginForm.controls.emailId.errors.required"> Required </em>
-                 </div>
+                     <em class="error" *ngIf="(submitclicked==true || loginForm.controls.emailId.touched) && loginForm.controls.emailId.errors?.invalidEmail">Valid email required </em>
+            
+                  </div>
              </div>
               <input  type="email"  name="emailId" formControlName="emailId" class="form-control" [email]="true" id="email">
             </div>
